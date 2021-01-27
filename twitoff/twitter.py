@@ -61,7 +61,3 @@ def add_or_update_user(username):
     else:
         # Commit everything to the database
         DB.session.commit()
-
-
-def insert_example_users():
-    add_or_update_user('joebiden')

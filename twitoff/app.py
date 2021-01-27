@@ -31,6 +31,12 @@ def create_app():
 
             tweets = User.query.filter(User.name == name).one().tweets
 
+        except Exception as e:
+            message = "Error adding {}: {}".format(name, e)
+            tweets = []
+
+        return render_template("user.html", title=name, tweets=tweets,
+                               message=message)
 
     @app.route('/compare', methods=['POST'])
     def compare():
@@ -43,18 +49,22 @@ def create_app():
             # predicts user
             prediction = predict_user(
                 user0, user1, request.values['tweet_text'])
-            message = '{} is more likely to be said by {} than {}.'.format(
+            message = "'{}' is more likely to be said by {} than {}.".format(
                 request.values['tweet_text'],
                 user1 if prediction else user0,
                 user0 if prediction else user1
-                )
+            )
 
         return render_template('prediction.html', title='Prediction',
                                message=message)
 
     @app.route('/update')
     def update():
-        add_or_update_user()
+        users = [user.name for user in User.query.all()]
+        reset()
+        for user in users:
+            add_or_update_user(user)
+
         return render_template('base.html', title='Home',
                                users=User.query.all())
 
