@@ -4,6 +4,7 @@ verify_ssl = true
 name = "pypi"
 
 [packages]
+pip = "21.0"
 flask = "*"
 flask-sqlalchemy = "*"
 jinja2 = "*"
@@ -19,4 +20,3 @@ cython = "*"
 
 [requires]
 python_version = "3.8"
-pip = "21"
