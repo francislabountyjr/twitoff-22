@@ -13,6 +13,7 @@ python-dotenv = "*"
 scikit-learn = "*"
 gunicorn = "*"
 psycopg2-binary = "*"
+cython = "*"
 
 [dev-packages]
 
