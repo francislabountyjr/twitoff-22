@@ -14,9 +14,9 @@ scikit-learn = "*"
 gunicorn = "*"
 psycopg2-binary = "*"
 cython = "*"
-pip = "*"
 
 [dev-packages]
 
 [requires]
 python_version = "3.8"
+pip = "*"
